@@ -3,6 +3,10 @@ var bodyParser =require('body-parser');
 
 var app=express();
 app.use(bodyParser.urlencoded({extended: false}))
+app.get('/',(req, res )=>{
+
+    res.send("hai..");
+});
 
 app.get('/students',(req, res )=>{
 
