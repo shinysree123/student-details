@@ -1,23 +1,45 @@
 var express =require('express');
 var bodyParser =require('body-parser');
-
+var Mongoose=require('mongoose');
 var app=express();
 app.use(bodyParser.urlencoded({extended: false}))
+
+const studentSchema =new Mongoose.Schema(
+    {
+    name:String,
+    roll:Number,
+    adminNo:Number,
+    clg:String
+    }
+);
+var studentModel=Mongoose.model('students',studentSchema);
+Mongoose.connect("mongodb+srv://shinyjoseph:shiny@123@cluster0-jlqrf.mongodb.net/test?retryWrites=true&w=majority");
+
+
 app.get('/',(req, res )=>{
 
     res.send("hai..");
 });
 
-app.get('/students',(req, res )=>{
+app.post('/students',(req, res )=>{
 
-    var name =req.body.getname;
-    var roll =req.body.getroll;
-    var adminNo=req.body.getadminNo;
-    var college=req.body.getclg;
-
-    res.json(req.body);
+    var getname =req.body.name;
+    var getroll =req.body.roll;
+    var getadminNo=req.body.adminNo;
+    var getcollege=req.body.clg;
+try {
+    var studentdata = new studentModel(req.body);
+    var result = studentdata.save();
+    res.json(result);
+    
+    } 
+catch (error) 
+    {
+    console.log(error);
+    res.status(500).send(error);
+    }   
 });
 
-app.listen(process.env.PORT || 3222, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("server started");
 });
