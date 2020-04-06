@@ -13,15 +13,14 @@ const studentSchema =new Mongoose.Schema(
     }
 );
 var studentModel=Mongoose.model('students',studentSchema);
-Mongoose.connect("mongodb+srv://shinyjoseph:shiny@123@cluster0-jlqrf.mongodb.net/test?retryWrites=true&w=majority");
-
+Mongoose.connect("mongodb+srv://shinyjoseph:shiny@cluster0-prim6.mongodb.net/test?retryWrites=true&w=majority");
 
 app.get('/',(req, res )=>{
 
     res.send("hai..");
 });
 
-app.post('/students',(req, res )=>{
+app.post('/students',async(req, res )=>{
 
     var getname =req.body.name;
     var getroll =req.body.roll;
@@ -29,7 +28,7 @@ app.post('/students',(req, res )=>{
     var getcollege=req.body.clg;
 try {
     var studentdata = new studentModel(req.body);
-    var result = studentdata.save();
+    var result = await studentdata.save();
     res.json(result);
     
     } 
