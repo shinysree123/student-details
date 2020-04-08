@@ -72,6 +72,6 @@ app.post('/search',async(req,res)=>{
 // var searchcollege=req.body.clg;
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3456, () => {
     console.log("server started");
 });
