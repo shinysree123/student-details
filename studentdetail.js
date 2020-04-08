@@ -38,7 +38,7 @@ catch (error)
     res.status(500).send(error);
     }   
 });
-app.get('/viewall',async(req,res)=>{
+app.post('/viewall',async(req,res)=>{
     try {
         var result =await studentModel.find();
         res.send(result);
