@@ -50,7 +50,8 @@ app.get('/viewall',async(req,res)=>{
 });
 app.post('/search',async(req,res)=>{
     try {
-        studentModel.find(req.body,(error,data)=>{
+        var searchkey =req.body.mydata;
+        studentModel.find({"adminNo": searchkey},(error,data)=>{
             if (error) {
                 throw error;
                 
