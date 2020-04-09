@@ -66,11 +66,6 @@ app.post('/search',async(req,res)=>{
     }
 });
 
-// app.post('/search',async(req,res)=>{
-//       try {
-// var seachadmin = req.body.adminNo;
-// var searchcollege=req.body.clg;
-
 
 app.listen(process.env.PORT || 3456, () => {
     console.log("server started");
