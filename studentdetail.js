@@ -54,7 +54,6 @@ app.post('/search',async(req,res)=>{
         studentModel.find({"adminNo": searchkey},(error,data)=>{
             if (error) {
                 throw error;
-                
             } else {
                 res.send(data);
             }
@@ -67,6 +66,6 @@ app.post('/search',async(req,res)=>{
 });
 
 
-app.listen(process.env.PORT || 3456, () => {
+app.listen(process.env.PORT || 3010, () => {
     console.log("server started");
 });
