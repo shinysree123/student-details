@@ -64,6 +64,20 @@ app.post('/search',async(req,res)=>{
     res.status(500).send(error);
     }
 });
+app.post('/search1',(req,res)=>{
+    try {
+        studentModel.find(req.body,(error,data)=>{
+            if (error) {
+                throw error;
+            } else {
+               res.send(data);
+            }
+        });
+        
+    } catch (error) {
+        
+    }
+});
 
 
 app.listen(process.env.PORT || 3010, () => {
